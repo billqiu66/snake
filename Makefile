@@ -15,6 +15,9 @@ PKG := "$(PROJECT_NAME)"
 PKG_LIST := $(shell go list ${PKG}/... | grep -v /vendor/)
 GO_FILES := $(shell find . -name '*.go' | grep -v /vendor/ | grep -v _test.go)
 
+contractName = SuperCoin
+contractDir = handler/smartcontract
+
 all: build
 build: dep ## Build the binary file
 	@go build -v -ldflags ${ldflags} .
@@ -43,13 +46,15 @@ swag-init:
 
 ca:
 	openssl req -new -nodes -x509 -out conf/server.crt -keyout conf/server.key -days 3650 -subj "/C=DE/ST=NRW/L=Earth/O=Random Company/OU=IT/CN=127.0.0.1/emailAddress=xxxxx@qq.com"
-
+abi-gen:
+	abigen --bin=${contractDir}/${contractName}.bin --abi=$(contractDir)/$(contractName).abi --pkg=smartcontract --out=$(contractDir)/$(contractName).go
 help:
 	@echo "make - compile the source code"
 	@echo "make clean - remove binary file and vim swp files"
 	@echo "make gotool - run go tool 'fmt' and 'vet'"
 	@echo "make ca - generate ca files"
 	@echo "make swag-init - gen swag doc"
+	@echo "make abigen - generate go file from smart contract .bin and .abi file"
 
 .PHONY: clean gotool ca help
 

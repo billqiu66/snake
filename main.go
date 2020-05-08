@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/1024casts/snake/service/contract"
+	"github.com/1024casts/snake/service/eth"
 	"net/http"
 	"os"
 	"os/signal"
@@ -63,6 +65,10 @@ func main() {
 	if err := config.Init(*cfg); err != nil {
 		panic(err)
 	}
+
+	// init eth service
+	eth.Init()
+	contract.Init()
 
 	// init db
 	model.DB.Init()

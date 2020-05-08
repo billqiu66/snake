@@ -48,3 +48,6 @@ qiniu:
   secret_key: SECRET_KEY
   signature_id: signature_id  # 短信签名id
   template_id: template_id    # 模板id
+
+eth:
+  url: "http://127.0.0.1:7545"

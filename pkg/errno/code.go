@@ -24,4 +24,10 @@ var (
 	ErrSendSMS           = &Errno{Code: 20108, Message: "发送短信错误"}
 	ErrSendSMSTooMany    = &Errno{Code: 20109, Message: "已超出当日限制，请明天再试"}
 	ErrVerifyCode        = &Errno{Code: 20110, Message: "验证码错误"}
+
+	// account errors
+	ErrAccount         = &Errno{Code: 30001, Message: "创建账户失败"}
+	ErrAccountPassword = &Errno{Code: 30002, Message: "密码不能为空"}
+	ErrAccountInvalid  = &Errno{Code: 30003, Message: "地址无效"}
+	ErrAccountCheck    = &Errno{Code: 30004, Message: "地址校验失败"}
 )

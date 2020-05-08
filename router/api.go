@@ -2,6 +2,7 @@ package routers
 
 import (
 	"github.com/1024casts/snake/handler"
+	"github.com/1024casts/snake/handler/account"
 
 	"github.com/gin-gonic/gin"
 
@@ -55,5 +56,18 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		u.PUT("/:id", user.Update)
 	}
 
+	// my api
+	// - 对地址进行检查
+	g.POST("/v1/account/checkaddress", account.CheckAddress)
+	// - 创建钱包地址,返回地址以及密钥对
+	g.GET("/v1/account/newaccount", account.NewAccount)
+	// - 创建钱包地址，返回keystore
+	g.POST("/v1/account/newkeystore", account.NewKeyStore)
+	// - 校验钱包密码
+	g.POST("/v1/account/verify", account.Verify)
+	// - 获取用户各种代币余额
+	g.POST("/v1/account/get_info", account.Balance)
+	// - 查询智能合约
+	//g.GET("/v1/contract/check", contract.Check)
 	return g
 }
