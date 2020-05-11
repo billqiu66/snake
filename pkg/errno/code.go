@@ -30,4 +30,9 @@ var (
 	ErrAccountPassword = &Errno{Code: 30002, Message: "密码不能为空"}
 	ErrAccountInvalid  = &Errno{Code: 30003, Message: "地址无效"}
 	ErrAccountCheck    = &Errno{Code: 30004, Message: "地址校验失败"}
+
+	// contract errors
+	ErrContractMissArg  = &Errno{Code: 40001, Message: "miss argument(s)"}
+	ErrContractBalance  = &Errno{Code: 40002, Message: "get balance error"}
+	ErrContractTransfer = &Errno{Code: 40002, Message: "transfer token fail"}
 )

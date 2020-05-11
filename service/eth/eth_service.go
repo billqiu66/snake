@@ -17,4 +17,24 @@ func Init() {
 		panic(err)
 	}
 	Client = client
+
+	//// 监听新区块的产生：url - ws://127.0.0.1:7545
+	//go func() {
+	//	headers := make(chan *types.Header)
+	//	sub, err := client.SubscribeNewHead(context.Background(), headers)
+	//	if err != nil {
+	//		log.Warnf("subscribe blockchain err: %v", err)
+	//		panic(err)
+	//	}
+	//	for {
+	//		select {
+	//		case err := <-sub.Err():
+	//			log.Warnf("subscribe blockchain err: %v", err)
+	//		case header := <-headers:
+	//			log.Infof("[New Block]: %v", header.Hash().Hex())
+	//		}
+	//	}
+	//
+	//}()
+
 }

@@ -3,6 +3,7 @@ package routers
 import (
 	"github.com/1024casts/snake/handler"
 	"github.com/1024casts/snake/handler/account"
+	"github.com/1024casts/snake/handler/contract"
 
 	"github.com/gin-gonic/gin"
 
@@ -66,8 +67,14 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	// - 校验钱包密码
 	g.POST("/v1/account/verify", account.Verify)
 	// - 获取用户各种代币余额
-	g.POST("/v1/account/get_info", account.Balance)
+	//g.POST("/v1/account/balance", account.Balance)
+	// - eth 转账
+	//g.POST("/v1/eth/transfer", eth.Transfer)
 	// - 查询智能合约
-	//g.GET("/v1/contract/check", contract.Check)
+	g.GET("/v1/contract/info", contract.Check)
+	// - 查询 token 余额
+	g.POST("/v1/contract/balance", contract.Balance)
+	// - 从coinbase中转出token
+	g.POST("/v1/contract/transfer", contract.Transfer)
 	return g
 }

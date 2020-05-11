@@ -143,7 +143,3 @@ func NewKeyStore(c *gin.Context) {
 func Verify(c *gin.Context) {
 
 }
-
-func Balance(c *gin.Context) {
-
-}
