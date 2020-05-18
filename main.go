@@ -81,6 +81,18 @@ func main() {
 	gin.SetMode(viper.GetString("run_mode"))
 
 	// Create the Gin engine.
+	/*
+		//Enging 继承了 RouterGroup 数据类型，因此也继承了RouterGroup的方法
+		type Engine struct {
+			RouterGroup
+			...
+		}
+
+		// RouterGroup 实现了IRouter接口因此engine具有IRouter的方法
+
+	*/
+
+
 	router := gin.Default()
 
 	// HealthCheck 健康检查路由
